@@ -1,6 +1,6 @@
 # Angular Training
 
-This project play ground for Angular training
+This project is a play ground for Angular training
 
 ## Development server
 

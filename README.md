@@ -6,4 +6,4 @@ This project is a play ground for Angular training
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Template driven form
+## Model driven form

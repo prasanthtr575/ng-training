@@ -1,9 +1,9 @@
-<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
-    <input type="text" name="firstName" placeholder="First Name" ngModel>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+    <input type="text" name="firstName" placeholder="First Name" formControlName="firstName">
     <br>
-    <input type="text" name="lastName" placeholder="Last Name" ngModel>
+    <input type="text" name="lastName" placeholder="Last Name" formControlName="lastName">
     <br>
-    <select name="gender" ngModel>
+    <select name="gender" formControlName="gender">
         <option value="F">Female</option>
         <option value="M">Male</option>
     </select>

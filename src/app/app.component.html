@@ -8,5 +8,5 @@
         <option value="M">Male</option>
     </select>
     <br><br>
-    <input type="submit" value="submit">
+    <input type="submit" [disabled]="!userForm.valid" value="submit">
 </form>

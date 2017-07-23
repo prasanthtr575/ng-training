@@ -1,3 +1,5 @@
-<p>
-  employee-detail works!
-</p>
+<h1> Details </h1>
+<h2>{{error}}</h2>
+<ul>
+  <li *ngFor="let emp of employees">{{emp.id}}  -  {{emp.name}}  -  {{emp.gender}}</li>
+</ul>

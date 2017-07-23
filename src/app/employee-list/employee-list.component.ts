@@ -9,10 +9,14 @@ import { DataService } from '../data/data.service';
 })
 export class EmployeeListComponent implements OnInit {
   employees: any[];
+  error: String;
   constructor(private _data: DataService) {}
 
   ngOnInit() {
-    this.employees = this._data.getEmployees();
+    this._data.getEmployees().subscribe(
+      data => this.employees = data.employees,
+      error => this.error = error
+    );
   }
 
 }

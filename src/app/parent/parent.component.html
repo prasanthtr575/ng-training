@@ -1,0 +1,5 @@
+<h1>Parent</h1>
+<input type="text" [(ngModel)]="parentData">
+<h2> {{childData}} </h2>
+<hr>
+<app-child [parentData]="parentData" (childEvent)="onChildEmits($event)"></app-child>

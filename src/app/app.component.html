@@ -1,12 +1,38 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
-    <input type="text" name="firstName" placeholder="First Name" formControlName="firstName">
-    <br>
-    <input type="text" name="lastName" placeholder="Last Name" formControlName="lastName">
-    <br>
-    <select name="gender" formControlName="gender">
-        <option value="F">Female</option>
-        <option value="M">Male</option>
-    </select>
-    <br><br>
-    <input type="submit" value="submit">
-</form>
+<div class="container">
+    <h2>User Data</h2>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="formGroup">
+            <label>Name</label>
+            <input type="text" #refName name="name" class="form-control" formControlName="name">
+            <div *ngIf="userForm.controls['name'].hasError('required')" class="alert alert-danger">
+                <i>Please enter name</i>
+            </div>
+            <div *ngIf="userForm.controls['name'].hasError('minlength')" class="alert alert-danger">
+                <i>aleast 3 characters</i>
+            </div>
+            <div *ngIf="userForm.controls['name'].hasError('maxlength')" class="alert alert-danger">
+                <i>Max 8 characters</i>
+            </div>
+        </div>
+        <div class="formGroup">
+            <label>Email</label>
+            <input type="text" name="email" class="form-control" formControlName="email">
+        </div>
+        <div formGroupName="address">
+            <div class="formGroup">
+                <label>Street</label>
+                <input type="text" name="street" class="form-control" formControlName="street">
+            </div>
+            <div class="formGroup">
+                <label>City</label>
+                <input type="text" name="city" class="form-control" formControlName="city">
+            </div>
+            <div class="formGroup">
+                <label>Postal Code</label>
+                <input type="text" name="postalCode" class="form-control" formControlName="postalCode">
+            </div>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
+    </form>
+</div>

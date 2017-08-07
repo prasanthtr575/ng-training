@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +7,23 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  userForm;
+  userForm: FormGroup;
+
+  constructor (private _formBuilder: FormBuilder) {}
 
   ngOnInit () {
-    this.userForm = new FormGroup({
-      firstName: new FormControl("P"),
-      lastName: new FormControl(""),
-      gender: new FormControl("M")
-    });
+    this.userForm = this._formBuilder.group({
+      name: ['Qwerty', [Validators.required, Validators.minLength(3), Validators.maxLength(8)]],
+      email: [],
+      address: this._formBuilder.group({
+        street: [],
+        city: [],
+        postalCode: []
+      })
+    })
   }
 
-  onSubmit (user) {
-    console.log(user);
+  onSubmit () {
+    console.log(this.userForm.value);
   }
 }
